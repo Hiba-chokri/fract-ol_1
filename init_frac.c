@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_frac.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/26 15:03:31 by hichokri          #+#    #+#             */
+/*   Updated: 2024/04/26 15:03:31 by hichokri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fractol.h"
 
 void init_fractal(t_fractal *fractal)
 {
-    fractal->x1 = -2.0;
-    fractal->x2 = 2.0;
-    fractal->y1 = -2.0;
-    fractal->y2 = 2.0;
+    fractal->x_min = -2.0;
+    fractal->x_max = 2.0;
+    fractal->y_min = -2.0;
+    fractal->y_max = 2.0;
     fractal->offset_x = 0;
     fractal->offset_y = 0;
     fractal->max_iter = 50;

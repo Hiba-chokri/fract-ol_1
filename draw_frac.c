@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_frac.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/26 15:02:22 by hichokri          #+#    #+#             */
+/*   Updated: 2024/04/26 15:02:22 by hichokri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"fractol.h"
 
 void calculate_mandelbrot(t_fractal *fractal)
 {
-    t_complex c;
-    t_complex z;
-    t_complex tmp;
+    t_fractal c;
+    t_fractal z;
+    t_fractal tmp;
     int i;
 
-    c.x = fractal->x / fractal->zoom + fractal->offset_x;
-    c.y = fractal->y / fractal->zoom + fractal->offset_y;
+    c.x = fractal->x / (WIDTH - 1) * (fractal->x_max - fractal->x_min) + fractal->x_min;
+    c.y = fractal->y / (HEIGHT - 1) * (fractal->x_max - fractal->x_min) + fractal->x_min;
     z.x = 0;
     z.y = 0;
     i = 0;
@@ -28,9 +40,9 @@ void calculate_mandelbrot(t_fractal *fractal)
 
 void calculate_julia(t_fractal *fractal)
 {
-    t_complex c;
-    t_complex z;
-    t_complex tmp;
+    t_fractal c;
+    t_fractal z;
+    t_fractal tmp;
     int i;
 
     c.x = fractal->real;
@@ -56,9 +68,9 @@ void draw_mandelbrot(t_fractal *fractal)
     fractal = malloc(sizeof(t_fractal));
 	fractal->x = 0;
 	fractal->y = 0;
-	while (fractal->x < SIZE)
+	while (fractal->x < WIDTH)
 	{
-		while (fractal->y < SIZE)
+		while (fractal->y < HEIGHT)
 		{
 			calculate_mandelbrot(fractal);
 			fractal->y++;
@@ -73,9 +85,9 @@ void draw_julia(t_fractal *fractal)
     fractal = malloc(sizeof(t_fractal));
     fractal->x = 0;
     fractal->y = 0;
-    while (fractal->x < SIZE)
+    while (fractal->x < WIDTH)
     {
-        while (fractal->y < SIZE)
+        while (fractal->y < WIDTH)
         {
             calculate_julia(fractal);
             fractal->y++;
@@ -85,20 +97,20 @@ void draw_julia(t_fractal *fractal)
     }
 } 
 
-void draw_burning_ship(t_fractal *fractal)
-{
-    fractal = malloc(sizeof(t_fractal));
-    fractal->x = 0;
-    fractal->y = 0;
-    while (fractal->x < SIZE)
-    {
-        while (fractal->y < SIZE)
-        {
-            calculate_burning_ship(fractal);
-            fractal->y++;
-        }
-        fractal->x++;
-        fractal->y = 0;
-    }
+// void draw_burning_ship(t_fractal *fractal)
+// {
+//     fractal = malloc(sizeof(t_fractal));
+//     fractal->x = 0;
+//     fractal->y = 0;
+//     while (fractal->x < WIDTH)
+//     {
+//         while (fractal->y < HEIGHT)
+//         {
+//             calculate_burning_ship(fractal);
+//             fractal->y++;
+//         }
+//         fractal->x++;
+//         fractal->y = 0;
+//     }
 
-}
+// }

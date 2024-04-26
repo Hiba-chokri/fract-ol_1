@@ -1,4 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/26 15:03:39 by hichokri          #+#    #+#             */
+/*   Updated: 2024/04/26 15:03:39 by hichokri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "fractol.h"
 double ft_atof(const char *str) {
   double res = 0.0;
   double dec_part = 0.0;
@@ -30,7 +42,6 @@ double ft_atof(const char *str) {
     decimal_places = 1;  // Set flag if decimal point is encountered
   }
 
-  // Extract decimal part (without pow)
   while (str[i] >= '0' && str[i] <= '9') {
     dec_part = dec_part * 10 + (str[i] - '0');
     if (decimal_places) {
