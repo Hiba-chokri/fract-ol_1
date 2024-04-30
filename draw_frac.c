@@ -12,7 +12,22 @@
 
 #include"fractol.h"
 
-void calculate_mandelbrot(t_fractal *fractal)
+int create_rgb(t_fractal *fractal)
+{
+    return (fractal->rgb->red << 16 | fractal->rgb->green << 8 |fractal->rgb->blue);
+}
+
+void img_pix_put(t_fractal *fractal, int col)
+{
+    char    *pixel;
+    
+    int x_offset = (int)(fractal->x * (fractal->image->bpp / 8));
+    int y_offset = (int)(fractal->y * fractal->image->size_line);
+    pixel = (char )(x_offset + y_offset) + fractal->image->addr;
+    *(int *)pixel = col;
+}
+
+int calculate_mandelbrot(t_fractal *fractal)
 {
     t_fractal c;
     t_fractal z;
@@ -33,12 +48,12 @@ void calculate_mandelbrot(t_fractal *fractal)
         i++;
     }
     if (i == fractal->max_iter)
-        put_color_to_pixel(fractal, fractal->x, fractal->y, 0x000000);
+        return(create_rgb(fractal));
     else
-        put_color_to_pixel(fractal, fractal->x, fractal->y, fractal->color * i);
+        return((create_rgb(fractal)) * i);
 }
 
-void calculate_julia(t_fractal *fractal)
+int calculate_julia(t_fractal *fractal)
 {
     t_fractal c;
     t_fractal z;
@@ -47,8 +62,10 @@ void calculate_julia(t_fractal *fractal)
 
     c.x = fractal->real;
     c.y = fractal->imaginary;
-    z.x = fractal->x / fractal->zoom + fractal->offset_x;
-    z.y = fractal->y / fractal->zoom + fractal->offset_y;
+    tmp.x = z.x * z.x - z.y * z.y + c.x;
+    tmp.y = 2 * z.x * z.y + c.y;
+    z.x = tmp.x;
+    z.y = tmp.y;
     i = 0;
     while (z.x * z.x + z.y * z.y <= 4 && i < fractal->max_iter)
     {
@@ -59,25 +76,27 @@ void calculate_julia(t_fractal *fractal)
         i++;
     }
     if (i == fractal->max_iter)
-        put_color_to_pixel(fractal, fractal->x, fractal->y, 0x000000);
+        return(create_rgb(fractal));
     else
-        put_color_to_pixel(fractal, fractal->x, fractal->y, fractal->color * i);
+        return((create_rgb(fractal)) * i);
 }
+
 void draw_mandelbrot(t_fractal *fractal)
 {
-    fractal = malloc(sizeof(t_fractal));
 	fractal->x = 0;
 	fractal->y = 0;
 	while (fractal->x < WIDTH)
 	{
 		while (fractal->y < HEIGHT)
 		{
-			calculate_mandelbrot(fractal);
+			img_pix_put(fractal,calculate_mandelbrot(fractal));
 			fractal->y++;
 		}
 		fractal->x++;
 		fractal->y = 0;
 	}
+    mlx_put_image_to_window(fractal->mlx, fractal->win,fractal->image->img, fractal->x, fractal->y);
+
 }
 
 void draw_julia(t_fractal *fractal)
@@ -87,30 +106,13 @@ void draw_julia(t_fractal *fractal)
     fractal->y = 0;
     while (fractal->x < WIDTH)
     {
-        while (fractal->y < WIDTH)
+        while (fractal->y < HEIGHT)
         {
-            calculate_julia(fractal);
+            img_pix_put(fractal, calculate_julia(fractal));
             fractal->y++;
         }
         fractal->x++;
         fractal->y = 0;
     }
-} 
-
-// void draw_burning_ship(t_fractal *fractal)
-// {
-//     fractal = malloc(sizeof(t_fractal));
-//     fractal->x = 0;
-//     fractal->y = 0;
-//     while (fractal->x < WIDTH)
-//     {
-//         while (fractal->y < HEIGHT)
-//         {
-//             calculate_burning_ship(fractal);
-//             fractal->y++;
-//         }
-//         fractal->x++;
-//         fractal->y = 0;
-//     }
-
-// }
+    mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->image->img, fractal->x, fractal->y);
+}
