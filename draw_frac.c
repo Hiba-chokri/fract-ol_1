@@ -12,19 +12,17 @@
 
 #include"fractol.h"
 
-int create_rgb(t_fractal *fractal)
-{
-    return (fractal->rgb->red << 16 | fractal->rgb->green << 8 |fractal->rgb->blue);
-}
+// int create_rgb(t_fractal *fractal)
+// {
+//     return (fractal->rgb.red << 16 | fractal->rgb.green << 8 |fractal->rgb.blue);
+// }
 
-void img_pix_put(t_fractal *fractal, int col)
+void img_pix_put(t_fractal *fractal,int x, int y, int col)
 {
     char    *pixel;
     
-    int x_offset = (int)(fractal->x * (fractal->image->bpp / 8));
-    int y_offset = (int)(fractal->y * fractal->image->size_line);
-    pixel = (char )(x_offset + y_offset) + fractal->image->addr;
-    *(int *)pixel = col;
+    pixel = fractal->image.addr + (y * fractal->image.size_line + x * (fractal->image.bpp / 8));
+     *(int *)pixel = col;
 }
 
 int calculate_mandelbrot(t_fractal *fractal)
@@ -48,9 +46,9 @@ int calculate_mandelbrot(t_fractal *fractal)
         i++;
     }
     if (i == fractal->max_iter)
-        return(create_rgb(fractal));
+        return(0x0);
     else
-        return((create_rgb(fractal)) * i);
+        return(0xff0000 * i);
 }
 
 int calculate_julia(t_fractal *fractal)
@@ -76,43 +74,42 @@ int calculate_julia(t_fractal *fractal)
         i++;
     }
     if (i == fractal->max_iter)
-        return(create_rgb(fractal));
+        return(0x0);
     else
-        return((create_rgb(fractal)) * i);
+        return(0xff0000 * i);
 }
 
 void draw_mandelbrot(t_fractal *fractal)
 {
 	fractal->x = 0;
 	fractal->y = 0;
-	while (fractal->x < WIDTH)
+	while (fractal->x < 500)
 	{
-		while (fractal->y < HEIGHT)
+		while (fractal->y < 500)
 		{
-			img_pix_put(fractal,calculate_mandelbrot(fractal));
+			img_pix_put(fractal, fractal->x, fractal->y,calculate_mandelbrot(fractal));
 			fractal->y++;
 		}
 		fractal->x++;
 		fractal->y = 0;
 	}
-    mlx_put_image_to_window(fractal->mlx, fractal->win,fractal->image->img, fractal->x, fractal->y);
+    mlx_put_image_to_window(fractal->mlx, fractal->win,fractal->image.img, fractal->x, fractal->y);
 
 }
 
 void draw_julia(t_fractal *fractal)
 {
-    fractal = malloc(sizeof(t_fractal));
     fractal->x = 0;
     fractal->y = 0;
-    while (fractal->x < WIDTH)
+    while (fractal->x < 500)
     {
-        while (fractal->y < HEIGHT)
+        while (fractal->y < 500)
         {
-            img_pix_put(fractal, calculate_julia(fractal));
+            img_pix_put(fractal,fractal->x, fractal->y, calculate_julia(fractal));
             fractal->y++;
         }
         fractal->x++;
         fractal->y = 0;
     }
-    mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->image->img, fractal->x, fractal->y);
+    mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->image.img, fractal->x, fractal->y);
 }

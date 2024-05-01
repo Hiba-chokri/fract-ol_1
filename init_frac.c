@@ -24,7 +24,11 @@ void init_fractal(t_fractal *fractal)
 void init_mlx(t_fractal *fractal)
 {
     fractal->mlx = mlx_init();
-    fractal->win = mlx_new_window(fractal->mlx, WIDTH, HEIGHT, "Fractol");
-    fractal->image->img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
-    fractal->image->addr = mlx_get_data_addr(fractal->image->img, &fractal->image->bpp, &fractal->image->size_line, &fractal->image->endian);
+    if (fractal->mlx == NULL)
+        return (1);
+    fractal->win = mlx_new_window(fractal->mlx, 500, 500, "Fractol");
+    if (fractal->win == NULL)
+        return (1); 
+    fractal->image.img = mlx_new_image(fractal->mlx, 500, 500);
+    fractal->image.addr = mlx_get_data_addr(fractal->image.img, &fractal->image.bpp, &fractal->image.size_line, &fractal->image.endian);
 }
