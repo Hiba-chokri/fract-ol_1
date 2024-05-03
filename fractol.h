@@ -17,6 +17,7 @@
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
+#include <string.h>
 # include <unistd.h>
 
 # define WIDTH 600
@@ -30,8 +31,6 @@
 # define KEY_RIGHT 65363
 # define KEY_PLUS 65451
 # define KEY_MINUS 65453
-# define MOUSE_SCROLL_UP 4
-# define MOUSE_SCROLL_DOWN 5
 typedef struct s_image
 {
     void *img;
@@ -61,20 +60,31 @@ typedef struct s_fractal
     double y_max;
     double real;
     double imaginary;
+    char *name;
     int     color;
     t_image image;
     t_rgb rgb;
 }				t_fractal;
+// typedef struct s_key {
+//     ON_KEYDOWN = 2;
+// 	ON_KEYUP = 3;
+// } t_key;
+// typedef struct s_mouse
+// {
+//     scroll_down = 4;
+//     scroll_up = 5;
+// } t_mouse;
 
-void	init_fractal(t_fractal *fractal);
+void	init_fractal(t_fractal *fractal, char *argv[]);
 void    init_mlx(t_fractal *fractal);
 void	draw_mandelbrot(t_fractal *fractal);
-int     calculate_julia(t_fractal *fractal);
+int calculate_julia(t_fractal *fractal);
+void draw_burning_ship(t_fractal *fractal);
 int     calculate_mandelbrot(t_fractal *fractal);
 void	draw_julia(t_fractal *fractal);
 void	draw_fractal(t_fractal *fractal);
-int		mouse_hook(int button, int x, int y, t_fractal *fractal);
 void	put_color_to_pixel(t_fractal *fractal);
+int calculate_burning_ship(t_fractal *fractal);
 int		key_hook(int keycode, t_fractal *fractal);
 int		close_window(t_fractal *fractal);
 int     ft_strcmp(const char *s1, const char *s2);
@@ -82,5 +92,8 @@ double ft_atof(const char *str);
 int exit_fractal(t_fractal *fractal);
 void img_pix_put(t_fractal *fractal, int x, int y, int col);
 int create_rgb(t_fractal *fractal);
+int  mouse_hook(int button, int x, int y, t_fractal *fractal);
+int key_hook(int keycode, t_fractal *fractal);
+void draw(t_fractal *fractal);
 
 #endif
