@@ -20,17 +20,6 @@
 #include <string.h>
 # include <unistd.h>
 
-# define WIDTH 600
-# define HEIGHT 300
-#define  MLX_ERROR 1
-//define keycodes for linux
-# define KEY_ESC 65307
-# define KEY_UP 65362
-# define KEY_DOWN 65364
-# define KEY_LEFT 65361
-# define KEY_RIGHT 65363
-# define KEY_PLUS 65451
-# define KEY_MINUS 65453
 typedef struct s_image
 {
     void *img;
