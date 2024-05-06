@@ -49,7 +49,8 @@ typedef struct s_fractal
     double y_max;
     double real;
     double imaginary;
-    char *name;
+    char name[100];
+    int iter;
     int     color;
     t_image image;
     t_rgb rgb;
@@ -76,7 +77,7 @@ void	put_color_to_pixel(t_fractal *fractal);
 int calculate_burning_ship(t_fractal *fractal);
 int		key_hook(int keycode, t_fractal *fractal);
 int		close_window(t_fractal *fractal);
-int     ft_strcmp(const char *s1, const char *s2);
+int     ft_strcmp( char *s1, char *s2);
 double ft_atof(const char *str);
 int exit_fractal(t_fractal *fractal);
 void img_pix_put(t_fractal *fractal, int x, int y, int col);
@@ -84,5 +85,6 @@ int create_rgb(t_fractal *fractal);
 int  mouse_hook(int button, int x, int y, t_fractal *fractal);
 int key_hook(int keycode, t_fractal *fractal);
 void draw(t_fractal *fractal);
+char	*ft_strcpy(char *dest, char *src);
 
 #endif

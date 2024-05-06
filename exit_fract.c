@@ -24,7 +24,6 @@ int	exit_fractal(t_fractal *fractal)
 
 int	key_hook(int keycode, t_fractal *fractal)
 {
-	printf("%d   \n", keycode);
 	if (keycode == 53)
 		exit_fractal(fractal);
 	if (keycode == 123)
@@ -53,41 +52,29 @@ int	key_hook(int keycode, t_fractal *fractal)
 
 int	mouse_hook(int button, int x, int y, t_fractal *fractal)
 {
-	printf("%d %d\n", x, y);
+	double x_mous;
+	double y_mous;
 
-	double x_mous, y_mous;
 	x_mous = x * (fractal->x_max - fractal->x_min) / 500 + fractal->x_min;
     y_mous = y * (fractal->y_max - fractal->y_min) / 500 + fractal->y_min;
-	if (button == 4)
+	if (button == 4 )
 	{
 		fractal->x_min = x_mous + (fractal->x_min - x_mous) / 0.5;
 		fractal->x_max = x_mous + (fractal->x_max - x_mous) / 0.5;
 		fractal->y_min = y_mous + (fractal->y_min - y_mous) / 0.5;
 		fractal->y_max = y_mous + (fractal->y_max - y_mous) / 0.5;
+		fractal->iter--;
 	}
-	if (button == 5)
+	if (button == 5 && fractal->iter < 60)
 	{
 		fractal->x_min = x_mous + (fractal->x_min - x_mous) * 0.5;
 		fractal->x_max = x_mous + (fractal->x_max - x_mous) * 0.5;
 		fractal->y_max = y_mous + (fractal->y_max - y_mous) * 0.5;
 		fractal->y_min = y_mous + (fractal->y_min - y_mous) * 0.5;
+		
+		printf("%d\n",fractal->iter);
+		fractal->iter++;
 	}
 	draw(fractal);
-
-	// if (button == 5)
-	// {
-	// 	fractal->x_min /= 0.5;
-	// 	fractal->x_max /= 0.5;
-	// 	fractal->y_max /= 0.5;
-	// 	fractal->y_min /= 0.5;
-	// }
-	// if (button == 4)
-	// {
-	// 	fractal->x_min *= 0.5;
-	// 	fractal->x_max *= 0.5;
-	// 	fractal->y_max *= 0.5;
-	// 	fractal->y_min *= 0.5;
-	// }
-	// draw(fractal);
 	return (0);
 }

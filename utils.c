@@ -41,9 +41,7 @@ double	ft_atof(const char *str)
 	}
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
 		|| str[i] == '\f' || str[i] == '\r')
-	{
 		i++;
-	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		res = res * 10 + (str[i] - '0');
@@ -59,15 +57,13 @@ double	ft_atof(const char *str)
 	{
 		dec_part = dec_part * 10 + (str[i] - '0');
 		if (decimal_places)
-		{
 			decimal_places++;
-		}
 		i++;
 	}
 	if (decimal_places)
 	{
 		divisor = 1;
-		while (j < decimal_places)
+		while (j < decimal_places - 1)
 		{
 			divisor *= 10;
 			j++;
@@ -78,16 +74,26 @@ double	ft_atof(const char *str)
 	return (res * sign);
 }
 
-int	ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
-	while (*s1 && *s2)
+	int	i;
+
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i] != '\0')
 	{
-		if (*s1 != *s2)
-		{
-			return (*s1 - *s2);
-		}
-		s1++;
-		s2++;
+		dest[i] = src[i];
+		i++;
 	}
-	return (*s1 - *s2);
+	dest[i] = '\0';
+	return (dest);
 }

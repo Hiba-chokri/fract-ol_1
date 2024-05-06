@@ -19,7 +19,8 @@ void init_fractal(t_fractal *fractal, char *argv[])
     fractal->y_min = -2.0;
     fractal->y_max = 2.0;
     fractal->max_iter = 100;
-    strcpy(fractal->name, argv[1]);
+    fractal->iter = 0;
+    ft_strcpy(fractal->name, argv[1]);
 }
 
 void init_mlx(t_fractal *fractal)
