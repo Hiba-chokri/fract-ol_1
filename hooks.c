@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:16:32 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/09 23:48:31 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:02:42 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int	exit_fractal(t_fractal *fractal)
 	mlx_destroy_window(fractal->mlx, fractal->win);
 	exit(0);
 }
-
-int	key_hook(int keycode, t_fractal *fractal)
+void keys(t_fractal *fractal, int keycode)
 {
 	if (keycode == 7)
 		fractal->c = 'x';
@@ -27,6 +26,10 @@ int	key_hook(int keycode, t_fractal *fractal)
 		fractal->c = 'r';
 	if(keycode == 35)
 		fractal->c = 'p';
+}
+int	key_hook(int keycode, t_fractal *fractal)
+{
+	keys(fractal, keycode);
 	if (keycode == 53)
 		exit_fractal(fractal);
 	if (keycode == 123)
@@ -49,7 +52,6 @@ int	key_hook(int keycode, t_fractal *fractal)
 		fractal->y_max -= 0.5;
 		fractal->y_min -= 0.5;
 	}
-	printf("%d \n", keycode);
 	draw(fractal);
 	return (0);
 }

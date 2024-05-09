@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:03:23 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/09 23:43:36 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:02:12 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int			is_good(char *str);
 int	check_alpha(char *str);
 int	check_digit(char *str);
 int	ft_strlen(char *s);
+void keys(t_fractal *fractal, int keycode);
 unsigned int switch_colors (t_fractal *fractal, int i);
 void ft_parsing(t_fractal fractal);
 

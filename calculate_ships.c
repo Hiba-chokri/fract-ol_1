@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:00:33 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/09 23:44:07 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:04:37 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	calculate_burning_ship(t_fractal *fractal)
 		i++;
 	}
 	if (i == fractal->max_iter)
-		return (create_rgb(fractal));
+		return (0x0);
 	else
-		return (create_rgb(fractal) * i);
+		return (switch_colors(fractal, i));
 }
