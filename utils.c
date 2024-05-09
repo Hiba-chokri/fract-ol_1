@@ -15,63 +15,59 @@
 
 #include "fractol.h"
 
-
-double	ft_atof(const char *str)
+void	ft_str(char *str, t_atof *ato, int i)
 {
-	double res;
-	double dec_part;
-	int divisor;
-	int sign;
-	int i;
-	int j;
-	int decimal_places;
-
-	res = 0.0;
-	dec_part = 0.0;
-	sign = 1;
-	i = 0;
-	j = 0;
-	decimal_places = 0;
-	if (*str == '+' || *str == '-')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (*str++ == '-')
-		{
-			sign = -1;
-		}
+		ato->dec_part = ato->dec_part * 10 + (str[i] - '0');
+		if (ato->decimal_places)
+			ato->decimal_places++;
+		i++;
 	}
+}
+
+void	ft_yf(t_atof *ato)
+{
+	int	j;
+
+	j = 0;
+	ato->divisor = 1;
+	while (j < ato->decimal_places - 1)
+	{
+		ato->divisor *= 10;
+		j++;
+	}
+	ato->dec_part /= ato->divisor;
+}
+
+
+double	ft_atof(char *str)
+{
+	int		i;
+	t_atof	ato;
+
+	ato.res = 0.0;
+	i = 0;
+	ato.dec_part = 0.0;
+	ato.sign = 1;
+	ato.decimal_places = 0;
+	if (*str == '+' || *str == '-')
+		if (*str++ == '-')
+			ato.sign = -1;
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
 		|| str[i] == '\f' || str[i] == '\r')
 		i++;
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		return (-1);
 	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = res * 10 + (str[i] - '0');
-		i++;
-	}
-	if (str[i] == '.')
-	{
-		i++;
-		decimal_places = 1;
-	}
-
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		dec_part = dec_part * 10 + (str[i] - '0');
-		if (decimal_places)
-			decimal_places++;
-		i++;
-	}
-	if (decimal_places)
-	{
-		divisor = 1;
-		while (j < decimal_places - 1)
-		{
-			divisor *= 10;
-			j++;
-		}
-		dec_part /= divisor;
-	}
-	res += dec_part;
-	return (res * sign);
+		ato.res = ato.res * 10 + (str[i++] - '0');
+	if (str[i++] == '.')
+		ato.decimal_places = 1;
+	ft_str(str, &ato, i);
+	if (ato.decimal_places)
+		ft_yf(&ato);
+	ato.res += ato.dec_part;
+	return (ato.res * ato.sign);
 }
 
 int	ft_strcmp(char *s1, char *s2)
@@ -96,4 +92,13 @@ char	*ft_strcpy(char *dest, char *src)
 	}
 	dest[i] = '\0';
 	return (dest);
+}
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

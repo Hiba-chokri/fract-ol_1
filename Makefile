@@ -4,7 +4,7 @@ CC = cc
 
 CFLAGS = #-Wall -Wextra -Werror -Imlx -fsanitize=address -g3
 
-SRCS = draw_frac.c exit_fract.c init_frac.c utils.c fractol.c
+SRCS = draw_frac.c hooks.c init_frac.c utils.c fractol.c calculate_ships.c coloring.c ft_parsing.c
 
 OBJS = $(SRCS:.c=.o)
 
