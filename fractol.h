@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:03:23 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/10 00:02:12 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/10 11:30:27 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_fractal
 	int			max_iter;
 	double		x;
 	double		y;
+	double		t;
 	double		x_min;
 	double		y_min;
 	double		x_max;
