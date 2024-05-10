@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:59:16 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/10 10:38:52 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/10 11:12:19 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ unsigned int	switch_colors(t_fractal *fractal, int i)
 {
 	if (fractal->c == 'x')
 	{
-		fractal->rgb.red = 0;
-		fractal->rgb.green = 144;
-		fractal->rgb.blue = 158;
+		fractal->rgb.red = 	2.55 * i;
+		fractal->rgb.green = 2.55 * i;
+		fractal->rgb.blue = 0;
 	}
 	else if (fractal->c == 'r')
 	{
