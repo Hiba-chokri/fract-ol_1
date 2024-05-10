@@ -2,7 +2,7 @@ NAME = fractol
 
 CC = cc
 
-CFLAGS = #-Wall -Wextra -Werror -Imlx -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -Imlx -fsanitize=address -g3
 
 SRCS = draw_frac.c hooks.c init_frac.c utils.c fractol.c calculate_ships.c coloring.c ft_parsing.c
 

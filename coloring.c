@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:59:16 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/09 23:55:46 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/10 10:38:52 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	img_pix_put(t_fractal *fractal, int x, int y, int col)
 	*(int *)pixel = col;
 }
 
-unsigned int switch_colors(t_fractal *fractal,int i)
+unsigned int	switch_colors(t_fractal *fractal, int i)
 {
 	if (fractal->c == 'x')
 	{
@@ -48,4 +48,14 @@ unsigned int switch_colors(t_fractal *fractal,int i)
 		fractal->rgb.blue = 2.55 * i;
 	}
 	return (create_rgb(fractal));
+}
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

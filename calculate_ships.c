@@ -35,7 +35,7 @@ int	calculate_mandelbrot(t_fractal *fractal)
 	if (i == fractal->max_iter)
 		return (0x0);
 	else
-		return (switch_colors(fractal,i));
+		return (switch_colors(fractal, i));
 }
 
 int	calculate_julia(t_fractal *fractal)
@@ -61,7 +61,7 @@ int	calculate_julia(t_fractal *fractal)
 	if (i == fractal->max_iter)
 		return (0x0);
 	else
-		return (switch_colors(fractal,i));
+		return (switch_colors(fractal, i));
 }
 
 int	calculate_burning_ship(t_fractal *fractal)

@@ -40,7 +40,6 @@ void	ft_yf(t_atof *ato)
 	ato->dec_part /= ato->divisor;
 }
 
-
 double	ft_atof(char *str)
 {
 	int		i;
@@ -92,13 +91,4 @@ char	*ft_strcpy(char *dest, char *src)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
 }

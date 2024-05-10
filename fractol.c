@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:03:14 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/09 23:57:56 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/10 10:34:49 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,35 @@ void	draw(t_fractal *fractal)
 	else if (fractal->name[0] == 'b')
 		draw_burning_ship(fractal);
 }
-void ft_parsing(t_fractal fractal)
+
+void	ft_parsing(t_fractal fractal)
 {
 	if (fractal.name[0] == 'j')
 	{
-		if (ft_strlen(fractal.name) > 6 || !is_good(fractal.argv[2]) || !is_good(fractal.argv[3]) )
+		if (ft_strlen(fractal.name) > 6 || !is_good(fractal.argv[2])
+			|| !is_good(fractal.argv[3]))
 			exit(0);
 	}
-	else if (fractal.name[0]=='m')
+	else if (fractal.name[0] == 'm')
 	{
 		if (ft_strlen(fractal.name) > 11)
 			exit(0);
 	}
-	else if (fractal.name[0]=='b')
+	else if (fractal.name[0] == 'b')
 	{
 		if (ft_strlen(fractal.name) > 13)
 			exit(0);
 	}
 }
+
 int	hf(t_fractal fractal)
 {
 	if (fractal.argc == 2 && ft_strcmp(fractal.argv[1], "mandelbrot") == 0)
 		draw(&fractal);
 	else if (fractal.argc == 4 && ft_strcmp(fractal.argv[1], "julia") == 0)
 		draw(&fractal);
-	else if (fractal.argc == 2 && ft_strcmp(fractal.argv[1], "burning_ship") == 0)
+	else if (fractal.argc == 2 && ft_strcmp(fractal.argv[1],
+			"burning_ship") == 0)
 		draw(&fractal);
 	return (0);
 }
@@ -75,5 +79,4 @@ int	main(int argc, char *argv[])
 	mlx_hook(fractal.win, 17, 0, exit_fractal, &fractal);
 	mlx_loop(fractal.mlx);
 	return (0);
-
 }
