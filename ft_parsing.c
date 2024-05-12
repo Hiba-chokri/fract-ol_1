@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:28:19 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/10 10:40:23 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/12 23:51:58 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,19 @@ int	check_valid(char *str)
 int	check_digit(char *str)
 {
 	int	i;
-
+	
 	i = 0;
-	while (str[i] != '.')
+	
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] != '.' && str[i] != '\0')
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}
+	if(str[i] == '\0')
+		return(1);
 	i++;
 	while (str[i] != '\0')
 	{

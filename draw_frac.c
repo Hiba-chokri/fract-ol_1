@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:02:22 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/06 17:12:59 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:30:37 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	draw_mandelbrot(t_fractal *fractal)
 {
 	fractal->x = 0;
 	fractal->y = 0;
-	while (fractal->x < 500)
+	while (fractal->x < VALUE)
 	{
-		while (fractal->y < 500)
+		while (fractal->y < VALUE)
 		{
 			img_pix_put(fractal, fractal->x, fractal->y,
 				calculate_mandelbrot(fractal));
@@ -35,9 +35,9 @@ void	draw_julia(t_fractal *fractal)
 {
 	fractal->x = 0;
 	fractal->y = 0;
-	while (fractal->x < 500)
+	while (fractal->x < VALUE)
 	{
-		while (fractal->y < 500)
+		while (fractal->y < VALUE)
 		{
 			img_pix_put(fractal, fractal->x, fractal->y,
 				calculate_julia(fractal));
@@ -54,9 +54,9 @@ void	draw_burning_ship(t_fractal *fractal)
 {
 	fractal->x = 0;
 	fractal->y = 0;
-	while (fractal->x < 500)
+	while (fractal->x < VALUE)
 	{
-		while (fractal->y < 500)
+		while (fractal->y < VALUE)
 		{
 			img_pix_put(fractal, fractal->x, fractal->y,
 				calculate_burning_ship(fractal));

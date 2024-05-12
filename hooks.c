@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:16:32 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/10 10:36:03 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:39:26 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	key_hook(int keycode, t_fractal *fractal)
 		fractal->y_max -= 0.5;
 		fractal->y_min -= 0.5;
 	}
+	mlx_clear_window(fractal->mlx, fractal->win);
 	draw(fractal);
 	return (0);
 }
@@ -63,8 +64,8 @@ int	mouse_hook(int button, int x, int y, t_fractal *fractal)
 	double	x_mous;
 	double	y_mous;
 
-	x_mous = x * (fractal->x_max - fractal->x_min) / 500 + fractal->x_min;
-	y_mous = y * (fractal->y_max - fractal->y_min) / 500 + fractal->y_min;
+	x_mous = x * (fractal->x_max - fractal->x_min) / VALUE + fractal->x_min;
+	y_mous = y * (fractal->y_max - fractal->y_min) / VALUE + fractal->y_min;
 	if (button == 4)
 	{
 		fractal->x_min = x_mous + (fractal->x_min - x_mous) / 0.5;
@@ -73,7 +74,7 @@ int	mouse_hook(int button, int x, int y, t_fractal *fractal)
 		fractal->y_max = y_mous + (fractal->y_max - y_mous) / 0.5;
 		fractal->iter--;
 	}
-	if (button == 5 && fractal->iter < 55)
+	if (button == 5 && fractal->iter < 49)
 	{
 		fractal->x_min = x_mous + (fractal->x_min - x_mous) * 0.5;
 		fractal->x_max = x_mous + (fractal->x_max - x_mous) * 0.5;

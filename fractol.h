@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:03:23 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/10 11:30:27 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/12 19:45:19 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-
+# define VALUE 600	
 typedef struct s_image
 {
 	void		*img;
