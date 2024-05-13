@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:03:31 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/12 16:26:35 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:07:00 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,13 @@ void	init_mlx(t_fractal *fractal)
 	fractal->image.addr = mlx_get_data_addr(fractal->image.img,
 			&fractal->image.bpp, &fractal->image.size_line,
 			&fractal->image.endian);
+}
+
+double ab(double d)
+{
+	if(d >= 0)
+		return (d);
+	else 
+		return ((-1) * d);
+		
 }

@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:00:33 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/12 23:01:16 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:06:32 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,6 @@ int	calculate_julia(t_fractal *fractal)
 		return (switch_colors(fractal, i));
 }
 
-int ab(int x)
-{
-	if(x < 0)
-		return (-x);
-	else 
-		return (x);
-}
 int	calculate_burning_ship(t_fractal *fractal)
 {
 	t_fractal	c;

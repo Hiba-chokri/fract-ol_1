@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:16:32 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/12 20:39:26 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:09:35 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,32 @@ void	keys(t_fractal *fractal, int keycode)
 		fractal->c = 'r';
 	if (keycode == 35)
 		fractal->c = 'p';
+	if (keycode == 53)
+		exit_fractal(fractal);
 }
 
 int	key_hook(int keycode, t_fractal *fractal)
 {
 	keys(fractal, keycode);
-	if (keycode == 53)
-		exit_fractal(fractal);
 	if (keycode == 123)
 	{
-		fractal->x_max += 0.5;
-		fractal->x_min += 0.5;
+		fractal->x_max -= 0.1;
+		fractal->x_min -= 0.1;
 	}
 	if (keycode == 124)
 	{
-		fractal->x_max -= 0.5;
-		fractal->x_min -= 0.5;
+		fractal->x_max += 0.1;
+		fractal->x_min += 0.1;
 	}
 	if (keycode == 126)
 	{
-		fractal->y_min += 0.5;
-		fractal->y_max += 0.5;
+		fractal->y_min += 0.1;
+		fractal->y_max += 0.1;
 	}
 	if (keycode == 125)
 	{
-		fractal->y_max -= 0.5;
-		fractal->y_min -= 0.5;
+		fractal->y_max -= 0.1;
+		fractal->y_min -= 0.1;
 	}
 	mlx_clear_window(fractal->mlx, fractal->win);
 	draw(fractal);
