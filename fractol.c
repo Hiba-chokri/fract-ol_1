@@ -51,7 +51,8 @@ void	ft_parsing(t_fractal fractal)
 		if (ft_strlen(fractal.name) > 10)
 			exit(1);
 	}
-	else if (fractal.argc == 2 && ft_strcmp(fractal.argv[1], "burning_ship") == 0)
+	else if (fractal.argc == 2 && ft_strcmp(fractal.argv[1],
+			"burning_ship") == 0)
 	{
 		if (ft_strlen(fractal.name) > 12)
 			exit(1);
@@ -91,8 +92,8 @@ int	main(int argc, char *argv[])
 	if (argc < 2)
 	{
 		write(2, "mandelbrot\njulia | real | imaginaire\nburning_ship", 50);
-		exit(1); 
-	}   
+		exit(1);
+	}
 	init_fractal(argc, argv, &fractal);
 	ft_parsing(fractal);
 	init_mlx(&fractal);

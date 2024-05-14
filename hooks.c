@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:16:32 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/13 21:09:35 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:35:50 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void	keys(t_fractal *fractal, int keycode)
 		fractal->c = 'p';
 	if (keycode == 53)
 		exit_fractal(fractal);
+	if (keycode == 69)
+		fractal->max_iter += 10;
+	if (keycode == 78)
+		fractal->max_iter -= 10;
 }
 
 int	key_hook(int keycode, t_fractal *fractal)
@@ -36,13 +40,13 @@ int	key_hook(int keycode, t_fractal *fractal)
 	keys(fractal, keycode);
 	if (keycode == 123)
 	{
-		fractal->x_max -= 0.1;
-		fractal->x_min -= 0.1;
+		fractal->x_max += 0.1;
+		fractal->x_min += 0.1;
 	}
 	if (keycode == 124)
 	{
-		fractal->x_max += 0.1;
-		fractal->x_min += 0.1;
+		fractal->x_max -= 0.1;
+		fractal->x_min -= 0.1;
 	}
 	if (keycode == 126)
 	{

@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:00:33 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/13 21:06:32 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/14 12:00:36 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int	calculate_mandelbrot(t_fractal *fractal)
 	t_fractal	tmp;
 	int			i;
 
-	c.x = fractal->x / VALUE * (fractal->x_max - fractal->x_min) + fractal->x_min;
-	c.y = fractal->y / VALUE * (fractal->y_max - fractal->y_min) + fractal->y_min;
+	c.x = fractal->x / VALUE * (fractal->x_max - fractal->x_min)
+		+ fractal->x_min;
+	c.y = fractal->y / VALUE * (fractal->y_max - fractal->y_min)
+		+ fractal->y_min;
 	z.x = 0;
 	z.y = 0;
 	i = 0;
@@ -47,8 +49,10 @@ int	calculate_julia(t_fractal *fractal)
 
 	c.x = fractal->real;
 	c.y = fractal->imaginary;
-	z.x = fractal->x / VALUE * (fractal->x_max - fractal->x_min) + fractal->x_min;
-	z.y = fractal->y / VALUE * (fractal->y_max - fractal->y_min) + fractal->y_min;
+	z.x = fractal->x / VALUE * (fractal->x_max - fractal->x_min)
+		+ fractal->x_min;
+	z.y = fractal->y / VALUE * (fractal->y_max - fractal->y_min)
+		+ fractal->y_min;
 	i = 0;
 	while (z.x * z.x + z.y * z.y <= 4 && i < fractal->max_iter)
 	{
@@ -71,8 +75,10 @@ int	calculate_burning_ship(t_fractal *fractal)
 	t_fractal	tmp;
 	int			i;
 
-	c.x = fractal->x / VALUE * (fractal->x_max - fractal->x_min) + fractal->x_min;
-	c.y = fractal->y / VALUE * (fractal->y_max - fractal->y_min) + fractal->y_min;
+	c.x = fractal->x / VALUE * (fractal->x_max - fractal->x_min)
+		+ fractal->x_min;
+	c.y = fractal->y / VALUE * (fractal->y_max - fractal->y_min)
+		+ fractal->y_min;
 	z.x = 0;
 	z.y = 0;
 	i = 0;

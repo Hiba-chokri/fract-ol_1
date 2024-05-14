@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:03:31 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/13 21:07:00 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:19:48 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_fractal(int argc, char *argv[], t_fractal *fractal)
 	fractal->x_max = 2.0;
 	fractal->y_min = -2.0;
 	fractal->y_max = 2.0;
-	fractal->max_iter = 60;
+	fractal->max_iter = 200;
 	fractal->iter = 0;
 	fractal->c = 'x';
 	fractal->t = 0;
@@ -37,11 +37,10 @@ void	init_mlx(t_fractal *fractal)
 			&fractal->image.endian);
 }
 
-double ab(double d)
+double	ab(double d)
 {
-	if(d >= 0)
+	if (d >= 0)
 		return (d);
-	else 
+	else
 		return ((-1) * d);
-		
 }

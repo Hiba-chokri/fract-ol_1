@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:03:23 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/13 21:04:31 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:25:54 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# define VALUE 600	
+# define VALUE 600
+
 typedef struct s_image
 {
 	void		*img;
@@ -102,6 +103,6 @@ int				ft_strlen(char *s);
 void			keys(t_fractal *fractal, int keycode);
 unsigned int	switch_colors(t_fractal *fractal, int i);
 void			ft_parsing(t_fractal fractal);
-double ab(double d);
+double			ab(double d);
 
 #endif

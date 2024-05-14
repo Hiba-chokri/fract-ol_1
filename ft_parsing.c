@@ -55,9 +55,8 @@ int	check_valid(char *str)
 int	check_digit(char *str)
 {
 	int	i;
-	
+
 	i = 0;
-	
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i] != '.' && str[i] != '\0')
@@ -66,8 +65,8 @@ int	check_digit(char *str)
 			return (0);
 		i++;
 	}
-	if(str[i] == '\0')
-		return(1);
+	if (str[i] == '\0')
+		return (1);
 	i++;
 	while (str[i] != '\0')
 	{
