@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:03:31 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/14 14:19:48 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/16 20:59:01 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_fractal(int argc, char *argv[], t_fractal *fractal)
 	fractal->t = 0;
 	fractal->argv = argv;
 	fractal->argc = argc;
+	fractal->cheft = 0.05;
 	ft_strcpy(fractal->name, fractal->argv[1]);
 }
 

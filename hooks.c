@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:16:32 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/14 14:35:50 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/16 20:58:04 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,23 @@ int	key_hook(int keycode, t_fractal *fractal)
 	keys(fractal, keycode);
 	if (keycode == 123)
 	{
-		fractal->x_max += 0.1;
-		fractal->x_min += 0.1;
+		fractal->x_max += fractal->cheft;
+		fractal->x_min += fractal->cheft;
 	}
 	if (keycode == 124)
 	{
-		fractal->x_max -= 0.1;
-		fractal->x_min -= 0.1;
+		fractal->x_max -= fractal->cheft;
+		fractal->x_min -= fractal->cheft;
 	}
 	if (keycode == 126)
 	{
-		fractal->y_min += 0.1;
-		fractal->y_max += 0.1;
+		fractal->y_min += fractal->cheft;
+		fractal->y_max += fractal->cheft;
 	}
 	if (keycode == 125)
 	{
-		fractal->y_max -= 0.1;
-		fractal->y_min -= 0.1;
+		fractal->y_max -= fractal->cheft;
+		fractal->y_min -= fractal->cheft;
 	}
 	mlx_clear_window(fractal->mlx, fractal->win);
 	draw(fractal);
@@ -77,6 +77,7 @@ int	mouse_hook(int button, int x, int y, t_fractal *fractal)
 		fractal->y_min = y_mous + (fractal->y_min - y_mous) / 0.5;
 		fractal->y_max = y_mous + (fractal->y_max - y_mous) / 0.5;
 		fractal->iter--;
+		fractal->cheft /= 0.5;
 	}
 	if (button == 5 && fractal->iter < 49)
 	{
@@ -85,6 +86,7 @@ int	mouse_hook(int button, int x, int y, t_fractal *fractal)
 		fractal->y_max = y_mous + (fractal->y_max - y_mous) * 0.5;
 		fractal->y_min = y_mous + (fractal->y_min - y_mous) * 0.5;
 		fractal->iter++;
+		fractal->cheft *= 0.5;
 	}
 	draw(fractal);
 	return (0);

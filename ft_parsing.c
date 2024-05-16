@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:28:19 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/12 23:51:58 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/15 20:25:29 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	check_valid(char *str)
 		if (str[i] == '.')
 		{
 			if (str[i + 1] == '\0')
-				return (0);
+				return (1);
 		}
 		i++;
 	}

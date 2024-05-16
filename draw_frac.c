@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:02:22 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/14 16:23:00 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/16 21:01:13 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	draw_mandelbrot(t_fractal *fractal)
 		fractal->x++;
 		fractal->y = 0;
 	}
-	mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->image.img, 0,
-		0);
+	 mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->image.img, 0,	0);
 }
 
 void	draw_julia(t_fractal *fractal)

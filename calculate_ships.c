@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:00:33 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/14 12:00:36 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/15 21:21:06 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	calculate_julia(t_fractal *fractal)
 		+ fractal->y_min;
 	i = 0;
 	while (z.x * z.x + z.y * z.y <= 4 && i < fractal->max_iter)
-	{
+{
 		tmp.x = z.x * z.x - z.y * z.y + c.x;
 		tmp.y = 2 * z.x * z.y + c.y;
 		z.x = tmp.x;

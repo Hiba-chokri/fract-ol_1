@@ -56,9 +56,9 @@ double	ft_atof(char *str)
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
 		|| str[i] == '\f' || str[i] == '\r')
 		i++;
-	if (!(str[i] >= '0' && str[i] <= '9'))
-		return (-1);
-	while (str[i] >= '0' && str[i] <= '9')
+	// if (!(str[i] >= '0' && str[i] <= '9'))
+	// 	return (-1);
+	while (str[i]  >= '0' && str[i] <= '9')
 		ato.res = ato.res * 10 + (str[i++] - '0');
 	if (str[i++] == '.')
 		ato.decimal_places = 1;

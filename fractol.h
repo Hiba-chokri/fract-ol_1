@@ -6,7 +6,7 @@
 /*   By: hichokri <hichokri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:03:23 by hichokri          #+#    #+#             */
-/*   Updated: 2024/05/13 21:25:54 by hichokri         ###   ########.fr       */
+/*   Updated: 2024/05/16 20:54:14 by hichokri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_fractal
 	double		y_max;
 	double		real;
 	double		imaginary;
+	double		cheft;
 	char		name[100];
 	int			iter;
 	int			color;
